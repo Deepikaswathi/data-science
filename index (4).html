@@ -1,0 +1,110 @@
+<!-- 
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Science Internship Task</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 75%;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+            font-size: 15px;
+            margin-top: 10px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1e7e34;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f1f1f1;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Data Science Internship Task</h1>
+
+    <p>Enter numerical data separated by commas:</p>
+
+    <textarea id="dataInput" placeholder="Example: 10, 20, 30, 40, 50"></textarea>
+
+    <button onclick="analyzeData()">Analyze Data</button>
+
+    <div class="output" id="output"></div>
+</div>
+
+<script>
+    function analyzeData() {
+        const input = document.getElementById("dataInput").value;
+        const output = document.getElementById("output");
+
+        if (input.trim() === "") {
+            alert("Please enter data");
+            return;
+        }
+
+        const numbers = input.split(",").map(Number);
+
+        if (numbers.some(isNaN)) {
+            alert("Please enter valid numbers only");
+            return;
+        }
+
+        const sum = numbers.reduce((a, b) => a + b, 0);
+        const mean = (sum / numbers.length).toFixed(2);
+        const max = Math.max(...numbers);
+        const min = Math.min(...numbers);
+
+        output.innerHTML = `
+            <h3>Data Analysis Results</h3>
+            <p><b>Total Values:</b> ${numbers.length}</p>
+            <p><b>Sum:</b> ${sum}</p>
+            <p><b>Mean:</b> ${mean}</p>
+            <p><b>Maximum:</b> ${max}</p>
+            <p><b>Minimum:</b> ${min}</p>
+        `;
+    }
+</script>
+
+</body>
+</html>
